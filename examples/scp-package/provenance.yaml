@@ -1,0 +1,194 @@
+edges:
+  - id: edge_results_excerpt_references_result_fig_3
+    subject: results_excerpt
+    predicate: references_result
+    object: fig_3
+    evidence_status: explicit
+    confidence: high
+    source_artifacts:
+      - inputs/artifacts/paper_excerpt.md
+    source_locations:
+      - paper excerpt
+    extraction_methods:
+      - direct_quote
+    author_confirmation_needed: false
+  - id: edge_results_excerpt_references_result_claim_calibration_shift
+    subject: results_excerpt
+    predicate: references_result
+    object: claim_calibration_shift
+    evidence_status: explicit
+    confidence: high
+    source_artifacts:
+      - inputs/artifacts/paper_excerpt.md
+    source_locations:
+      - paper excerpt
+    extraction_methods:
+      - direct_quote
+    author_confirmation_needed: false
+  - id: edge_claim_calibration_shift_supported_by_fig_3
+    subject: claim_calibration_shift
+    predicate: supported_by
+    object: fig_3
+    evidence_status: explicit
+    confidence: high
+    source_artifacts:
+      - inputs/artifacts/paper_excerpt.md
+      - inputs/artifacts/figure_caption.md
+    source_locations:
+      - paper excerpt
+      - figure caption
+    extraction_methods:
+      - direct_quote
+    author_confirmation_needed: false
+  - id: edge_claim_calibration_shift_supported_by_calibration_eval_metrics
+    subject: claim_calibration_shift
+    predicate: supported_by
+    object: calibration_eval_metrics
+    evidence_status: explicit
+    confidence: high
+    source_artifacts:
+      - inputs/artifacts/figure_caption.md
+      - inputs/artifacts/methods_paragraph.md
+      - inputs/artifacts/readme_fragment.md
+    source_locations:
+      - figure caption
+      - methods paragraph
+      - README fragment
+    extraction_methods:
+      - direct_quote
+    author_confirmation_needed: false
+  - id: edge_claim_calibration_shift_supported_by_temporal_recalibration_eval
+    subject: claim_calibration_shift
+    predicate: supported_by
+    object: temporal_recalibration_eval
+    evidence_status: explicit
+    confidence: high
+    source_artifacts:
+      - inputs/artifacts/methods_paragraph.md
+    source_locations:
+      - methods paragraph
+    extraction_methods:
+      - direct_quote
+    author_confirmation_needed: false
+  - id: edge_claim_calibration_shift_supported_by_evaluate_calibration
+    subject: claim_calibration_shift
+    predicate: supported_by
+    object: evaluate_calibration
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts: []
+    source_locations: []
+    extraction_methods:
+      - conversion_review
+    author_confirmation_needed: false
+  - id: edge_claim_calibration_shift_supported_by_build_figure3
+    subject: claim_calibration_shift
+    predicate: supported_by
+    object: build_figure3
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts: []
+    source_locations: []
+    extraction_methods:
+      - conversion_review
+    author_confirmation_needed: false
+  - id: edge_claim_calibration_shift_has_assumption_assumption_lab_mapping_stability
+    subject: claim_calibration_shift
+    predicate: has_assumption
+    object: assumption_lab_mapping_stability
+    evidence_status: unresolved
+    confidence: low
+    source_artifacts: []
+    source_locations: []
+    extraction_methods:
+      - author_review_needed
+    author_confirmation_needed: true
+  - id: edge_fig_3_uses_dataset_calibration_eval_metrics
+    subject: fig_3
+    predicate: uses_dataset
+    object: calibration_eval_metrics
+    evidence_status: explicit
+    confidence: high
+    source_artifacts: []
+    source_locations: []
+    extraction_methods:
+      - conversion_review
+    author_confirmation_needed: false
+  - id: edge_fig_3_generated_by_build_figure3
+    subject: fig_3
+    predicate: generated_by
+    object: build_figure3
+    evidence_status: explicit
+    confidence: high
+    source_artifacts:
+      - inputs/artifacts/readme_fragment.md
+      - inputs/artifacts/repo_tree.txt
+    source_locations:
+      - README fragment
+      - repo tree
+    extraction_methods:
+      - direct_quote
+    author_confirmation_needed: false
+  - id: edge_fig_3_uses_method_temporal_recalibration_eval
+    subject: fig_3
+    predicate: uses_method
+    object: temporal_recalibration_eval
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts: []
+    source_locations: []
+    extraction_methods:
+      - conversion_review
+    author_confirmation_needed: false
+  - id: edge_temporal_recalibration_eval_depends_on_related_work_rao_2021_temporal_recalibration
+    subject: temporal_recalibration_eval
+    predicate: depends_on_related_work
+    object: rao_2021_temporal_recalibration
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts:
+      - inputs/artifacts/methods_paragraph.md
+    source_locations:
+      - methods paragraph
+    extraction_methods:
+      - citation_parse
+    author_confirmation_needed: false
+  - id: edge_inspect_calibration_package_references_artifact_calibration_eval_metrics
+    subject: inspect_calibration_package
+    predicate: references_artifact
+    object: calibration_eval_metrics
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts:
+      - operations.yaml
+    source_locations:
+      - operation recipe inputs
+    extraction_methods:
+      - author_entry
+    author_confirmation_needed: false
+  - id: edge_inspect_calibration_package_references_artifact_build_figure3
+    subject: inspect_calibration_package
+    predicate: references_artifact
+    object: build_figure3
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts:
+      - operations.yaml
+    source_locations:
+      - operation recipe inputs
+    extraction_methods:
+      - author_entry
+    author_confirmation_needed: false
+  - id: edge_temporal_recalibration_neuroscience_demo_references_artifact_fig_3
+    subject: temporal_recalibration_neuroscience_demo
+    predicate: references_artifact
+    object: fig_3
+    evidence_status: explicit
+    confidence: medium
+    source_artifacts:
+      - manifest.yaml
+    source_locations:
+      - study summary
+    extraction_methods:
+      - author_entry
+    author_confirmation_needed: false

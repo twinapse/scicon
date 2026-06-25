@@ -1,0 +1,14 @@
+methods:
+  - id: temporal_recalibration_eval
+    description: >
+      Compute held-out expected calibration error before and after temporal
+      recalibration.
+    inputs:
+      - held-out site predictions
+    outputs:
+      - derived/metrics/calibration_eval.parquet
+    parameters: []
+    script: scripts/evaluate_calibration.py
+    quality_checks:
+      - unresolved
+    evidence_status: explicit

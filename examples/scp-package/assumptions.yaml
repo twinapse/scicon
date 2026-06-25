@@ -1,0 +1,5 @@
+assumptions:
+  - id: assumption_lab_mapping_stability
+    description: missing
+    severity: ambiguous
+    evidence_status: unresolved

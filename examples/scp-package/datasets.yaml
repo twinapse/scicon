@@ -1,0 +1,16 @@
+datasets:
+  - id: calibration_eval_metrics
+    name: Held-out calibration metrics
+    description: >
+      Metrics table used to quantify expected calibration error before and
+      after temporal recalibration.
+    type: metrics_table
+    location: derived/metrics/calibration_eval.parquet
+    download_instructions: missing
+    usage_notes:
+      - Used as the direct source for Figure 3.
+    variables:
+      expected_calibration_error:
+        description: Expected calibration error value reported before and after recalibration.
+        evidence_status: explicit
+    evidence_status: explicit

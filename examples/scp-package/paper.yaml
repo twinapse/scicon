@@ -1,0 +1,10 @@
+sections:
+  - id: results_excerpt
+    title: Paper excerpt
+    type: results
+    source_location: inputs/artifacts/paper_excerpt.md
+    related_claims:
+      - claim_calibration_shift
+    related_figures:
+      - fig_3
+    evidence_status: explicit

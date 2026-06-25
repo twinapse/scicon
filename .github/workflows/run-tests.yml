@@ -1,0 +1,49 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+      id: python_setup
+
+    - name: Cache Python virtualenv
+      id: python_cache
+      uses: actions/cache@v4
+      with:
+        path: venv
+        key: venv-${{ runner.os }}-python-${{ steps.python_setup.outputs.python-version }}-${{ hashFiles('**/requirements.txt', '**/requirements-ci.txt') }}
+        restore-keys: venv-${{ runner.os }}-python-${{ steps.python_setup.outputs.python-version }}-
+
+    - name: Install dependencies
+      if: steps.python_cache.outputs.cache-hit != 'true'
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-ci.txt
+
+    - name: Install package
+      run: |
+        source venv/bin/activate
+        pip install -e .
+
+    - name: Run tests
+      run: |
+        source venv/bin/activate
+        python -m pytest -q tests -ra --maxfail=1

@@ -1,0 +1,21 @@
+study:
+  id: temporal_recalibration_neuroscience_demo
+  title: Temporal recalibration of held-out neuroscience site predictions
+  authors:
+    - Example NeuroML Team
+  summary: >
+    Demonstration package for a neuroscience prediction study where temporal
+    recalibration reduces held-out expected calibration error.
+  paper: inputs/artifacts/paper_excerpt.md
+  repository: inputs/artifacts/repo_tree.txt
+  data_sources:
+    - derived/metrics/calibration_eval.parquet
+  schema_version: scp-0.1
+  conversion_status: author_confirmed
+  supplementary_materials:
+    - inputs/artifacts/figure_caption.md
+  software_environment: missing
+  persistent_identifiers: {}
+  maintainers:
+    - Example NeuroML maintainer
+  object_version: '2026.06-demo'

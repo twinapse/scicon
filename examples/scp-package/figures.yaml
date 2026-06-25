@@ -1,0 +1,8 @@
+figures:
+  - id: fig_3
+    caption: >
+      Calibration curves before and after temporal recalibration on the
+      held-out sites.
+    panels: []
+    reproduction_status: ambiguous
+    evidence_status: explicit

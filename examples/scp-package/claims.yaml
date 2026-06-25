@@ -1,0 +1,7 @@
+claims:
+  - id: claim_calibration_shift
+    text: >
+      Temporal recalibration reduced expected calibration error from 0.09 to
+      0.04 on the held-out sites.
+    section: results_excerpt
+    evidence_status: explicit

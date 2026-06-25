@@ -1,0 +1,7 @@
+related_work:
+  - id: rao_2021_temporal_recalibration
+    citation: Rao et al. (2021)
+    identifier: missing
+    relationship: adapted_method
+    differences: missing
+    evidence_status: explicit

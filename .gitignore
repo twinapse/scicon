@@ -1,0 +1,40 @@
+# Python bytecode and native extensions
+__pycache__/
+*.py[codz]
+*$py.class
+*.so
+
+# Build and packaging artifacts
+.Python
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+MANIFEST
+
+# Test and coverage artifacts
+.coverage
+.coverage.*
+.pytest_cache/
+htmlcov/
+coverage.xml
+
+# Tool caches
+.ruff_cache/
+
+# Local environments and shell config
+.env
+.envrc
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Coding-agent files
+.cursorignore
+.cursorindexingignore
+.claude/settings.local.json
+.codex/config.toml

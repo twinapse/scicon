@@ -1,0 +1,23 @@
+code_artifacts:
+  - id: evaluate_calibration
+    path: scripts/evaluate_calibration.py
+    purpose: Compute held-out calibration metrics from held-out site predictions.
+    inputs:
+      - held-out site predictions
+    outputs:
+      - derived/metrics/calibration_eval.parquet
+    role: evaluation
+    status: explicit
+    execution_instructions: null
+    evidence_status: explicit
+  - id: build_figure3
+    path: scripts/build_figure3.py
+    purpose: Render Figure 3 from the held-out calibration metrics table.
+    inputs:
+      - derived/metrics/calibration_eval.parquet
+    outputs:
+      - paper-ready Figure 3
+    role: figure_generation
+    status: explicit
+    execution_instructions: null
+    evidence_status: explicit

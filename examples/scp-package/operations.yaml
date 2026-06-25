@@ -1,0 +1,24 @@
+operations:
+  - id: inspect_calibration_package
+    name: Inspect calibration package metadata
+    purpose: >
+      Describe the packaged claim, figure, dataset, method, and code links for
+      reviewer inspection.
+    inputs:
+      - claims.yaml
+      - figures.yaml
+      - datasets.yaml
+      - methods.yaml
+      - codebase.yaml
+      - provenance.yaml
+    outputs:
+      - package explanation
+    steps:
+      - Read the package YAML.
+      - Trace typed provenance edges.
+      - Preserve missing and ambiguous statuses in the answer.
+    commands: []
+    safety_level: read_only
+    known_caveats:
+      - The recipe describes inspection metadata only.
+    execution_supported: false
