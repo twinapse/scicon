@@ -322,9 +322,9 @@ Prefer tests that cover:
 - MCP tools/resources and not-enough-information behavior.
 - Operation recipes remaining descriptive with `execution_supported: false`.
 
-The CI workflow in [.github/workflows/run-tests.yml](.github/workflows/run-tests.yml) runs tests with Python 3.12 and the dependency split above.
+The CI workflow in [.github/workflows/run-tests.yaml](.github/workflows/run-tests.yaml) runs tests with Python 3.12 and the dependency split above.
 
-The CI workflow in [.github/workflows/format-and-lint.yml](.github/workflows/format-and-lint.yml) runs isort, YAPF, Ruff, and Pylint against available Python paths.
+The CI workflow in [.github/workflows/format-and-lint.yaml](.github/workflows/format-and-lint.yaml) runs isort, YAPF, Ruff, and Pylint against available Python paths.
 
 ## Git
 
