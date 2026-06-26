@@ -285,7 +285,7 @@ MANIFEST_FILENAME = 'manifest.yaml'
 
 ## Tests and checks
 
-Run relevant tests before opening or updating a pull request.
+Run relevant tests before opening or updating a PR.
 The default command is:
 
 ```bash
@@ -332,7 +332,10 @@ A clean Git history makes it easier to understand why a change was made and what
 
 ### Commits
 
-Use the Conventional Commits structure as the base commit message format:
+Write the commit header as a user-facing release-note fragment.
+Each PR is squash-merged into one commit on `main`, the PR title becomes that commit header, and release-please publishes it as the changelog entry.
+
+Use the Conventional Commits structure as the commit message format:
 
 ```text
 <type>[optional scope]: <description>
@@ -344,41 +347,49 @@ Use the Conventional Commits structure as the base commit message format:
 
 Follow these rules for each part of the message:
 
-1. **Header line** — `<type>[optional scope]: <description>`
+1. **Header** — `<type>[optional scope]: <description>`
+   - The whole header is published as-is in the changelog, so write it as a clear, user-facing release-note fragment.
    - **Type**
-     - Use a brief label describing the kind of change.
-     - Use `feat` when a commit adds a new feature and `fix` when a commit patches a bug.
-     - Types other than `feat` and `fix` are allowed.
-     - Other common types include:
+     - Use one of the types configured for release-please:
+       - `build`: build-system or packaging change
+       - `chore`: maintenance or tooling change
+       - `ci`: continuous-integration change
        - `docs`: documentation-only change
-       - `style`: non-behavioral formatting or style-only change
-       - `refactor`: code restructuring without behavior change
+       - `feat`: new feature
+       - `fix`: bug fix
        - `perf`: performance improvement
+       - `refactor`: code restructuring without behavior change
+       - `revert`: reversion of an earlier change
+       - `style`: non-behavioral formatting or style-only change
        - `test`: test-only change
-       - `chore`: maintenance or tooling update
+     - `feat`, `fix`, `perf`, and `revert` appear in the changelog.
+     - `build`, `chore`, `ci`, `docs`, `refactor`, `style`, and `test` remain hidden from the changelog unless they carry a breaking-change signal.
    - **Scope (optional)**
-     - Use a narrow, meaningful scope such as `cli`, `interface`, `package`, `schema`, `validation`, `docs`, or `mcp-server`.
+     - Use a narrow, meaningful scope such as `cli`, `interface`, `package`, `schema`, `validation`, or `mcp-server`.
    - **Breaking change (optional)**
      - Append `!` immediately before the `:` to flag a breaking change, for example `feat(cli)!:`.
      - A breaking change may use any commit type.
    - **Description**
-     - Keep it under 50 characters.
+     - Keep the whole header at 72 characters or fewer.
      - Use imperative mood.
+     - Start with a lowercase word unless the first word is a proper noun, brand, acronym, or code identifier.
      - Do not end it with a period.
 
 2. **Body** — `[optional body]`
    - Explain what changed and why.
    - For non-trivial commits, add a short bullet list introduced by `Changes:`, starting each item with a capital letter.
+   - Under the repository squash settings, a single-commit PR carries the full commit message to `main`, so the body is the git-native place for the "why".
 
 3. **Footers** — `[optional footer(s)]`
-   - Use git trailer style such as `Refs: #123`.
-   - Use an uppercase `BREAKING CHANGE:` footer to describe the break flagged by `!`.
+   - Use an uppercase `BREAKING CHANGE:` footer as the secondary way to describe a break flagged by `!`.
+   - Link issues in the PR description with `Closes #NN` instead of using a `Refs:` footer.
 
 Also make sure to:
 
 - Be specific about the affected subsystem or behavior.
 - Keep each commit focused on one logical change.
 - Use backticks for code references such as function names, class names, commands, and file paths.
+- Apply these same header rules to PR titles, because the PR title becomes the squash commit header.
 
 Example commit message:
 
@@ -391,36 +402,34 @@ remain confined to hand-authored SCP artifacts.
 Changes:
 - Reject absolute or escaping package file paths in `resolve_package_file`
 - Cover traversal failures in `tests/unit/test_paths.py`
-
-Refs: #123
 ```
 
-### Pull requests
+### Pull requests (PRs)
 
-PR titles and descriptions should make the change understandable without opening the diff first.
+Write the PR title and description so the change is understandable without opening the diff first.
+Each PR is squash-merged into one commit on `main`.
+With the repository settings in [docs/releasing.md](docs/releasing.md#github-settings), GitHub uses the PR title plus `(#NN)` as the squash subject.
 
 #### Title
 
 Format:
 
 ```text
-[Scope] Short, descriptive title
+<type>[optional scope][optional !]: <description>
 ```
 
 Example:
 
 ```text
-[Validation] Reject unknown provenance predicates
+fix(validation): reject unknown provenance predicates
 ```
 
 Guidelines:
 
-1. Keep the title concise.
-2. Use imperative mood.
-3. Use sentence case for the title text after any optional scope label, while keeping proper nouns and established product names capitalized as needed.
-4. Avoid generic titles such as `Fix bug` or `Update code`.
-5. Reference an issue or ticket when that context matters.
-6. Avoid unnecessary punctuation or decoration.
+1. Follow the commit header rules above.
+2. Use imperative mood and be specific about the affected subsystem or behavior.
+3. Use `!` before the `:` as the primary CI-verifiable signal for a breaking change.
+4. Avoid unnecessary punctuation or decoration.
 
 #### Description
 
@@ -429,31 +438,61 @@ Include:
 - A `Summary` section that starts with a short paragraph and may be followed by bullets.
 - A `Motivation` section that starts with a short paragraph and may be followed by bullets.
 - Important context or constraints.
-- A categorized list of new features, behavior changes, refactors, fixes, or documentation updates.
-- The tests that were added or updated to cover the change.
-- Bullet items that start with a capital letter when bullets are used.
-- Code references, including function names, class names, commands, and file paths, enclosed in backticks.
+- A categorized list of breaking changes, new features, behavior changes, fixes, refactors, or documentation updates.
+- The tests that were added or updated to cover the changes.
+- `Closes #NN` when the PR resolves an issue.
+
+Make sure to:
+
+- Start with a capital letter and end with a period in each bullet.
+- Use backticks for code references, identifiers, and file paths.
+
+The PR description may summarize the commits, but git history is the source of truth for the durable change record.
 
 Example PR description:
 
 ```markdown
 ## Summary
 
-This change makes package validation fail with a clear error when
-`provenance.yaml` contains a predicate outside the declared vocabulary.
+This change makes package validation fail with a clear error when `provenance.yaml` contains a predicate outside the declared vocabulary.
 
 ## Motivation
 
-Package authors hand-write typed provenance edges, so invalid predicates should
-be caught early with feedback that points directly at the broken package data.
+Package authors hand-write typed provenance edges, so invalid predicates should be caught early with feedback that points directly at the broken package data.
 
 ## Behavior changes
 
-- Reject unsupported predicates during `scicon.validation.checks.run_validation`
-- Keep valid `provenance.yaml` edges passing without additional warnings
+- Reject unsupported predicates during `scicon.validation.checks.run_validation`.
+- Keep valid `provenance.yaml` edges passing without additional warnings.
 
 ## Tests
 
-- Run `python -m pytest -q tests/unit/test_validation.py -ra`
-- Cover invalid predicates and existing valid-package behavior
+- Run `python -m pytest -q tests/unit/test_validation.py -ra`.
+- Cover invalid predicates and existing valid-package behavior.
+
+Closes #123
 ```
+
+#### Breaking changes
+
+Use `!` in the PR title as the primary signal for breaking changes.
+Use a `BREAKING CHANGE:` footer as the secondary signal when a longer explanation is useful.
+Before `1.0.0`, breaking changes drive a minor version bump.
+
+#### Changelog links
+
+Squash-merge appends `(#NN)` to the commit subject.
+release-please's default notes builder renders that suffix as the PR link and also links the commit.
+Do not set `changelog-type: github`, because that would drop the configured sentence-case commit-type sections.
+
+#### Enforcement
+
+A semantic PR title check such as `amannn/action-semantic-pull-request` is recommended.
+With the required repository settings, that check validates the squash subject before merge.
+The residual gap is that a merger can hand-edit the squash message, which GitHub cannot lock.
+Accept that residual gap.
+
+### Releases
+
+Release automation is documented in [docs/releasing.md](docs/releasing.md).
+release-please consumes the Conventional Commit types described above to maintain the changelog and choose release bumps.

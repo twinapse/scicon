@@ -107,4 +107,5 @@ It contains one small neuroscience-style package with claims, figures, datasets,
 - [CONTRIBUTING.md](CONTRIBUTING.md): Shared contributor policies, checks, and Git conventions.
 - [docs/architecture.md](docs/architecture.md): Package layout, layer boundaries, serving model, and interface contract.
 - [docs/protocol.md](docs/protocol.md): Final-protocol context and expansion rules.
+- [docs/releasing.md](docs/releasing.md): Release automation, versioning, changelog, and PyPI sequencing.
 - [docs/coding-agent-setup.md](docs/coding-agent-setup.md): Project-local coding-agent setup guidance.
