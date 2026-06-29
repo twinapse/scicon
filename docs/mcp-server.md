@@ -1,39 +1,18 @@
 # MCP server
 
-This document explains how to install and run the MCP server this repository provides.
+This document explains how to run and configure the MCP server this repository provides.
 
 <!-- toc -->
 
-- [Install](#install)
 - [Path resolution](#path-resolution)
 - [Manual registration](#manual-registration)
 - [Tools](#tools)
 - [Resources](#resources)
 - [Serving behavior](#serving-behavior)
 
-## Install
-
-Install from this repository in a Python 3.12 environment:
-
-```bash
-pip install -e .
-```
-
-Validate a package:
-
-```bash
-scicon validate --package-dir examples/scp-package
-```
-
-Run the server over stdio:
-
-```bash
-scicon serve --package-dir examples/scp-package
-```
-
 ## Path resolution
 
-`scicon serve` and `scicon validate` resolve the package directory in this order:
+`scicon serve` resolves the package directory in this order:
 
 1. `--package-dir`.
 2. `SCP_PACKAGE_DIR`.
@@ -44,13 +23,13 @@ Package-relative file opens are guarded so paths cannot escape the package root.
 
 ## Logging
 
-`scicon serve` and `scicon validate` write logs to `stderr`, never to `stdout`, so server logs never interfere with the `stdio` MCP protocol stream.
+`scicon serve` writes logs to `stderr`, never to `stdout`, so server logs never interfere with the `stdio` MCP protocol stream.
 Set the `SCP_LOG_LEVEL` environment variable to control verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`; default `INFO`).
 On startup the server logs the resolved package directory and a summary of the loaded package; a validation failure is logged at `ERROR` before the process exits non-zero.
 
 ## Manual registration
 
-For managed target-repo setup, use [`scicon init`](init.md).
+For managed setup, use [`scicon init`](init.md).
 This section records the low-level MCP server registration contract for launchers or integrations that need to be configured by hand.
 
 Use `SCP_PACKAGE_DIR` plus `serve --package-dir` because launcher working directories can differ.

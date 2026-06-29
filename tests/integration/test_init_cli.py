@@ -17,7 +17,7 @@ from scicon.schema.filenames import DEFAULT_PACKAGE_DIRNAME
 
 
 class TestInitMain:
-    """Tests for target-repo bootstrap behavior."""
+    """Tests for repository bootstrap behavior."""
 
     def test_fresh_install_default_auto_writes_expected_artifacts(
         self,

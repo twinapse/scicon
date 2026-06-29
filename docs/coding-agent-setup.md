@@ -45,7 +45,7 @@ That means:
 
 ## Codex
 
-The [`.codex`](../.codex) directory contains the Codex workflow for this repo:
+The [`.codex`](../.codex) directory contains the Codex workflow for this repository:
 
 - [`.codex/hooks.json`](../.codex/hooks.json) registers the project hooks.
 - [`.codex/hooks/venv_session_start.py`](../.codex/hooks/venv_session_start.py) checks whether a valid Python virtual environment is configured and adds that information as session context.
@@ -72,7 +72,7 @@ On native Windows, keep `VIRTUAL_ENV` pointed at the environment root but switch
 ## Claude Code
 
 The [`.claude`](../.claude) directory is reserved for Claude Code project settings.
-In this repo, the relevant file is the local, gitignored `.claude/settings.local.json`.
+In this repository, the relevant file is the local, gitignored `.claude/settings.local.json`.
 
 That local file is the right place for personal, machine-specific Claude Code setup, for example:
 
