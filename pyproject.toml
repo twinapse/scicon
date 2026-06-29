@@ -5,15 +5,32 @@ build-backend = 'hatchling.build'
 [project]
 name = 'scicon'
 dynamic = ['version']
+authors = [
+  {name = 'Twinapse'},
+]
 description = 'Scientific Context Protocol.'
 readme = 'README.md'
 requires-python = '>=3.12'
 license = {file = 'LICENSE'}
+classifiers = [
+  'Development Status :: 3 - Alpha',
+  'Intended Audience :: Science/Research',
+  'License :: OSI Approved :: MIT License',
+  'Operating System :: OS Independent',
+  'Programming Language :: Python :: 3',
+  'Programming Language :: Python :: 3.12',
+  'Topic :: Scientific/Engineering',
+]
 dependencies = [
   'mcp>=1.2',
   'pyyaml>=6.0',
   'tomlkit>=0.13',
 ]
+
+[project.urls]
+Homepage = 'https://github.com/twinapse/scicon'
+Repository = 'https://github.com/twinapse/scicon'
+Issues = 'https://github.com/twinapse/scicon/issues'
 
 [project.optional-dependencies]
 dev = [
