@@ -333,7 +333,7 @@ A clean Git history makes it easier to understand why a change was made and what
 ### Commits
 
 Write the commit header as a user-facing release-note fragment.
-Each PR is squash-merged into one commit on `main`, the PR title becomes that commit header, and release-please publishes it as the changelog entry.
+Each PR is squash-merged into one commit on `main`, the PR title becomes that commit header, and [Release Please](https://github.com/googleapis/release-please) publishes it as the changelog entry.
 
 Use the Conventional Commits structure as the commit message format:
 
@@ -350,7 +350,7 @@ Follow these rules for each part of the message:
 1. **Header** — `<type>[optional scope]: <description>`
    - The whole header is published as-is in the changelog, so write it as a clear, user-facing release-note fragment.
    - **Type**
-     - Use one of the types configured for release-please:
+     - Use one of the types configured for Release Please:
        - `build`: build-system or packaging change
        - `chore`: maintenance or tooling change
        - `ci`: continuous-integration change
@@ -482,7 +482,7 @@ Before `1.0.0`, breaking changes drive a minor version bump.
 #### Changelog links
 
 Squash-merge appends `(#NN)` to the commit subject.
-release-please's default notes builder renders that suffix as the PR link and also links the commit.
+Release Please's default notes builder renders that suffix as the PR link and also links the commit.
 Do not set `changelog-type: github`, because that would drop the configured sentence-case commit-type sections.
 
 #### Enforcement
@@ -495,4 +495,4 @@ Accept that residual gap.
 ### Releases
 
 Release automation is documented in [docs/releasing.md](docs/releasing.md).
-release-please consumes the Conventional Commit types described above to maintain the changelog and choose release bumps.
+Release Please consumes the Conventional Commit types described above to maintain the changelog and choose release bumps.

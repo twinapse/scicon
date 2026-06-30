@@ -14,9 +14,9 @@ This guide documents how `scicon` releases are prepared before publishing to PyP
 
 1. Contributors open PRs with Conventional Commit titles.
 2. Each PR is squash-merged into one commit on `main`, so exactly one Conventional Commit lands there.
-3. release-please reads the commits on `main` and maintains a release PR.
+3. [Release Please](https://github.com/googleapis/release-please) reads the commits on `main` and maintains a release PR.
 4. The release PR updates `CHANGELOG.md` and `.release-please-manifest.json`.
-5. After the release PR is merged, release-please creates the GitHub release and the `vX.Y.Z` tag.
+5. After the release PR is merged, Release Please creates the GitHub release and the `vX.Y.Z` tag.
 6. The tag-triggered PyPI workflow builds the package with hatch-vcs.
 7. hatch-vcs derives the package version from the tag, so the tag, changelog version, and published package version match.
 
@@ -33,13 +33,13 @@ This guide documents how `scicon` releases are prepared before publishing to PyP
 
 ## Changelog
 
-- `CHANGELOG.md` is managed by release-please.
-- The changelog follows Keep a Changelog principles through release-please commit-type sections rather than literal Keep a Changelog categories.
-- The explicit `changelog-sections` list in [release-please-config.json](../release-please-config.json) mirrors the section titles and hidden flags from the [`conventional-changelog-conventionalcommits` preset constants](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-conventionalcommits/src/constants.js) that release-please uses for its default changelog sections.
-  Keep `changelog-sections` aligned with the upstream preset unless the repository intentionally wants changelog grouping that diverges from the release-please default.
+- `CHANGELOG.md` is managed by Release Please.
+- The changelog follows Keep a Changelog principles through Release Please commit-type sections rather than literal Keep a Changelog categories.
+- The explicit `changelog-sections` list in [release-please-config.json](../release-please-config.json) mirrors the section titles and hidden flags from the [`conventional-changelog-conventionalcommits` preset constants](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-conventionalcommits/src/constants.js) that Release Please uses for its default changelog sections.
+  Keep `changelog-sections` aligned with the upstream preset unless the repository intentionally wants changelog grouping that diverges from the Release Please default.
 - The release notes use the Conventional Commit descriptions that land on `main`.
 - A commit with `Release-As` may still appear in `CHANGELOG.md` even when its commit type would otherwise be hidden.
-- release-please links entries to the squash-merged PR through the `(#NN)` suffix and to the commit.
+- Release Please links entries to the squash-merged PR through the `(#NN)` suffix and to the commit.
 
 ## GitHub settings
 
@@ -56,8 +56,8 @@ This guide documents how `scicon` releases are prepared before publishing to PyP
 
 ## Token requirements
 
-- The release-please workflow must use `secrets.RELEASE_PLEASE_TOKEN` or an equivalent non-default GitHub App or PAT secret.
-- The token must allow release-please to create release PRs, tags, and releases.
-- Do not rely on the default `GITHUB_TOKEN` for release-please tags.
+- The Release Please workflow must use `secrets.RELEASE_PLEASE_TOKEN` or an equivalent non-default GitHub App or PAT secret.
+- The token must allow Release Please to create release PRs, tags, and releases.
+- Do not rely on the default `GITHUB_TOKEN` for Release Please tags.
   Tags and PRs created with the default `GITHUB_TOKEN` do not trigger downstream GitHub Actions workflows.
-- If the project cannot provide a non-default release-please token, replace tag-triggered publishing with publication inside the release-please workflow.
+- If the project cannot provide a non-default Release Please token, replace tag-triggered publishing with publication inside the Release Please workflow.
