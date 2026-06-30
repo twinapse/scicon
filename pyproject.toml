@@ -1,17 +1,17 @@
 [build-system]
-requires = ['hatchling', 'hatch-vcs']
+requires = ['hatchling', 'hatch-vcs', 'hatch-fancy-pypi-readme']
 build-backend = 'hatchling.build'
 
 [project]
 name = 'scicon'
-dynamic = ['version']
+dynamic = ['version', 'readme']
 authors = [
   {name = 'Twinapse'},
 ]
-description = 'Scientific Context Protocol.'
-readme = 'README.md'
+description = 'The official implementation of the Scientific Context Protocol, an agent-readable layer for scientific outputs served over MCP'
 requires-python = '>=3.12'
 license = {file = 'LICENSE'}
+keywords = ['scp', 'scientific-context-protocol', 'mcp', 'model-context-protocol', 'research', 'ai-agents']
 classifiers = [
   'Development Status :: 3 - Alpha',
   'Intended Audience :: Science/Research',
@@ -31,6 +31,7 @@ dependencies = [
 Homepage = 'https://github.com/twinapse/scicon'
 Repository = 'https://github.com/twinapse/scicon'
 Issues = 'https://github.com/twinapse/scicon/issues'
+Documentation = 'https://github.com/twinapse/scicon#documentation'
 
 [project.optional-dependencies]
 dev = [
@@ -52,6 +53,34 @@ scicon = 'scicon.cli.main:main'
 
 [tool.hatch.version]
 source = 'vcs'
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = 'text/markdown'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = 'README.md'
+start-at = '# Scientific Context Protocol'
+end-before = '<!-- toc -->'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = 'README.md'
+start-at = '## Current status'
+end-before = '## Documentation'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = """
+## Documentation
+
+Browse the full documentation index [on GitHub](https://github.com/twinapse/scicon#documentation).
+"""
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\]\((docs/[^)]+|CONTRIBUTING\.md)\)'
+replacement = '](https://github.com/twinapse/scicon/blob/main/\1)'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\]\((examples/[^)]+)\)'
+replacement = '](https://github.com/twinapse/scicon/tree/main/\1)'
 
 [tool.hatch.build.targets.wheel]
 artifacts = [

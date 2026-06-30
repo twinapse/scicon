@@ -86,7 +86,7 @@ Keep the deterministic-first rule: prefer parsing, imports, and validation befor
 
 | Stage | No-LLM deterministic | LLM optional | Human confirmation |
 | --- | --- | --- | --- |
-| Package authoring | Yes | Optional outside this repo | High-impact inferred links |
+| Package authoring | Yes | Optional outside this repository | High-impact inferred links |
 | YAML loading | Yes | No | No |
 | Link and status validation | Yes | No | No |
 | Package browsing | Yes | No | No |

@@ -20,15 +20,15 @@ ALL_AGENT_KEY = 'all'
 @dataclass(frozen=True)
 class AgentDescriptor:
     """
-    Describe one target-repo agent integration.
+    Describe one `scicon init` agent integration.
 
     Args:
         key (str): CLI key for the agent.
         display_name (str): Human-readable agent name.
-        policy_file (Path): Target-repo file for always-on policy text.
-        skill_path (Path): Target-repo skill or prompt path.
+        policy_file (Path): Managed file for always-on policy text.
+        skill_path (Path): Managed skill or prompt path.
         skill_template (str): Template filename for the skill or prompt.
-        mcp_file (Path): Target-repo MCP registration file.
+        mcp_file (Path): Managed MCP registration file.
         mcp_format (Literal['json', 'toml']): MCP registration file format.
         needs_always_on_policy (bool): Whether ``--always-on auto`` writes
             policy text for this agent.

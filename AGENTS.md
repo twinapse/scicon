@@ -27,7 +27,7 @@ Install or run tools only inside the activated virtual environment.
 - Reuse existing vocabulary: follow the [naming rules](CONTRIBUTING.md#naming) and reuse an established term over coining a synonym.
 - Reuse existing structure: follow the [reuse rules](CONTRIBUTING.md#reuse) and prefer extending an existing helper, module, or pattern over introducing a parallel abstraction.
   When in doubt, do not add the new concept.
-- `scicon init` is the sanctioned bootstrap entry point for writing managed SCP setup files into a user-specified target repository.
+- `scicon init` is the sanctioned bootstrap entry point for writing managed SCP setup files into the user's repository.
 - Do not convert inferred, mined, or ambiguous metadata into confirmed package truth without source evidence or author confirmation.
 - Keep schema, package, validation, and interface concerns separate.
 - Treat final-protocol context in `docs/protocol.md` as reference material.

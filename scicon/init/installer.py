@@ -1,5 +1,5 @@
 """
-Install, refresh, and uninstall `scicon init` target artifacts.
+Install, refresh, and uninstall `scicon init` artifacts.
 """
 
 from collections import abc
@@ -67,7 +67,7 @@ class InstallResult:
             str: Summary text.
         """
         prefix = 'Dry run: would ' if self.dry_run else ''
-        return (f'{prefix}{self.action} SCP target artifacts: '
+        return (f'{prefix}{self.action} SCP artifacts: '
                 f'{len(self.written)} written, '
                 f'{len(self.removed)} removed, '
                 f'{len(self.unchanged)} unchanged.')
@@ -86,10 +86,10 @@ def install(
     dry_run: bool,
 ) -> InstallResult:
     """
-    Install managed SCP artifacts into a target repository.
+    Install managed SCP artifacts into the user's repository.
 
     Args:
-        target_root (Path): Target repository root.
+        target_root (Path): Root of the user's repository.
         agents (tuple[AgentDescriptor, ...]): Selected agents.
         package_dir (Path): Resolved package directory path.
         package_dir_value (str): Package directory value written to templates.
@@ -177,10 +177,10 @@ def uninstall(
     dry_run: bool,
 ) -> InstallResult:
     """
-    Remove managed SCP artifacts from a target repository.
+    Remove managed SCP artifacts from the user's repository.
 
     Args:
-        target_root (Path): Target repository root.
+        target_root (Path): Root of the user's repository.
         agents (tuple[AgentDescriptor, ...]): Selected agents.
         write_skill (bool): Whether to remove skill and prompt files.
         write_mcp (bool): Whether to remove MCP server registration entries.
@@ -251,10 +251,10 @@ def refresh(
     dry_run: bool,
 ) -> InstallResult:
     """
-    Re-emit current canonical SCP target artifacts.
+    Re-emit current canonical SCP artifacts.
 
     Args:
-        target_root (Path): Target repository root.
+        target_root (Path): Root of the user's repository.
         agents (tuple[AgentDescriptor, ...]): Selected agents.
         package_dir (Path): Resolved package directory path.
         package_dir_value (str): Package directory value written to templates.

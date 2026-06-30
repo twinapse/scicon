@@ -70,7 +70,7 @@ def validate_main(argv: list[str] | None = None) -> int:
 
 def init_main(argv: list[str] | None = None) -> int:
     """
-    Bootstrap a target repository for SCP-aware agent usage.
+    Bootstrap the user's repository for SCP-aware agent usage.
 
     Args:
         argv (list[str] | None): Optional CLI arguments.
@@ -102,7 +102,7 @@ def main(argv: list[str] | None = None) -> int:
 
     init_parser = subparsers.add_parser(
         'init',
-        help='Bootstrap a target repo for SCP-aware agent usage.',
+        help='Bootstrap your repository for SCP-aware agent usage.',
     )
     _add_init_args(init_parser)
     init_parser.set_defaults(handler=_run_init)
@@ -158,7 +158,7 @@ def _run_init(args: argparse.Namespace) -> int:
         return 1
     target_root = args.target.expanduser().resolve()
     if not target_root.is_dir():
-        print(f'Target repository directory not found: {target_root}', file=sys.stderr)
+        print(f'Repository directory not found: {target_root}', file=sys.stderr)
         return 1
     package_root = default_package_dir(target_root, args.package_dir)
     package_dir_value = _package_dir_value(target_root, package_root)
@@ -220,7 +220,7 @@ def _add_package_dir_arg(parser: argparse.ArgumentParser) -> None:
 
 def _build_init_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description='Bootstrap a target repo for SCP-aware agent usage.',)
+        description='Bootstrap your repository for SCP-aware agent usage.',)
     _add_init_args(parser)
     return parser
 
@@ -231,13 +231,13 @@ def _add_init_args(parser: argparse.ArgumentParser) -> None:
         nargs='?',
         type=Path,
         default=Path('.'),
-        help='Target repository root to bootstrap.',
+        help='Repository root to bootstrap.',
     )
     parser.add_argument(
         '--package-dir',
         type=Path,
         default=None,
-        help='Package directory value to register for the target repo.',
+        help='Package directory value to register for your repository.',
     )
     parser.add_argument(
         '--agent',
@@ -270,7 +270,7 @@ def _add_init_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         '--uninstall',
         action='store_true',
-        help='Remove managed SCP artifacts from the target repo.',
+        help='Remove managed SCP artifacts from your repository.',
     )
     parser.add_argument(
         '--refresh',

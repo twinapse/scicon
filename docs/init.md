@@ -1,7 +1,7 @@
-# Target-repo bootstrap
+# Repository bootstrap
 
-`scicon init` bootstraps a consuming research repository so coding agents prefer the SCP MCP server before reading raw papers, code, notebooks, or data files.
-It is separate from `scicon serve`: the server reads and serves the package, while `scicon init` writes a small, managed set of files into the target repo selected on the command line.
+`scicon init` bootstraps your repository so coding agents prefer the SCP MCP server before reading raw papers, code, notebooks, or data files.
+It is separate from `scicon serve`: the server reads and serves the package, while `scicon init` writes a small, managed set of files into the repository you select on the command line.
 
 <!-- toc -->
 
@@ -15,7 +15,7 @@ It is separate from `scicon serve`: the server reads and serves the package, whi
 
 ## Quick start
 
-From a target repository that will contain a hand-authored `scp-package/` directory:
+From your repository, which will contain a hand-authored `scp-package/` directory:
 
 ```bash
 scicon init .
@@ -32,7 +32,7 @@ scicon init . --dry-run
 
 ## Generated artifacts
 
-By default, `scicon init` writes these target-repo artifacts:
+By default, `scicon init` writes these artifacts:
 
 - `.mcp.json`: Adds or replaces only `mcpServers.scp`.
 - `.codex/config.toml`: Adds or replaces only `[mcp_servers.scp]`.

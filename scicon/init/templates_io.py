@@ -42,7 +42,7 @@ def render_policy(*, package_dir: str, server_key: str) -> str:
     Render the always-on policy block.
 
     Args:
-        package_dir (str): Target-repo package directory value.
+        package_dir (str): Package directory value written into templates.
         server_key (str): MCP server key.
 
     Returns:
@@ -66,7 +66,7 @@ def render_template(
 
     Args:
         template_name (str): Template filename under ``scicon/init/templates``.
-        package_dir (str): Target-repo package directory value.
+        package_dir (str): Package directory value written into templates.
         server_key (str): MCP server key.
 
     Returns:

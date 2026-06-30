@@ -23,7 +23,7 @@ def default_package_dir(
     Resolve the package directory without requiring it to exist.
 
     Args:
-        target_root (str | Path): Target repository root for the default path.
+        target_root (str | Path): Root of the user's repository.
         package_dir (str | Path | None): Explicit package directory, when set.
 
     Returns:

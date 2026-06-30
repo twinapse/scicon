@@ -1,5 +1,5 @@
 """
-Target-repo bootstrap helpers for SCP agent integrations.
+Bootstrap helpers for SCP agent integrations.
 """
 
 from scicon.init.agents import AGENT_DESCRIPTORS
