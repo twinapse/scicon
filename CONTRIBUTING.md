@@ -26,11 +26,16 @@ Python code and CI use **Python 3.12**.
 
 Dependencies:
 
-- Runtime: [requirements.txt](requirements.txt).
-- Development: [requirements-dev.txt](requirements-dev.txt).
-- CI: [requirements-ci.txt](requirements-ci.txt).
+- Runtime dependencies live in `[project.dependencies]` in [pyproject.toml](pyproject.toml).
+- Development check dependencies live in `[project.optional-dependencies].dev` in [pyproject.toml](pyproject.toml).
+- Test dependencies live in `[project.optional-dependencies].test` in [pyproject.toml](pyproject.toml).
+- Publish dependencies live in `[project.optional-dependencies].publish` in [pyproject.toml](pyproject.toml).
 
-Packaging metadata lives in [pyproject.toml](pyproject.toml).
+Install local contributor tooling with:
+
+```bash
+pip install -e '.[dev]'
+```
 
 ## General guidelines
 
@@ -322,9 +327,9 @@ Prefer tests that cover:
 - MCP tools/resources and not-enough-information behavior.
 - Operation recipes remaining descriptive with `execution_supported: false`.
 
-The CI workflow in [.github/workflows/run-tests.yaml](.github/workflows/run-tests.yaml) runs tests with Python 3.12 and the dependency split above.
+The CI workflow in [.github/workflows/run-tests.yaml](.github/workflows/run-tests.yaml) runs tests with Python 3.12 and the `test` extra.
 
-The CI workflow in [.github/workflows/format-and-lint.yaml](.github/workflows/format-and-lint.yaml) runs isort, YAPF, Ruff, and Pylint against available Python paths.
+The CI workflow in [.github/workflows/format-and-lint.yaml](.github/workflows/format-and-lint.yaml) runs isort, YAPF, Ruff, and Pylint against available Python paths with the `dev` extra.
 
 ## Git
 

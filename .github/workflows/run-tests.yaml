@@ -26,22 +26,20 @@ jobs:
       uses: actions/cache@v4
       with:
         path: venv
-        key: venv-${{ runner.os }}-python-${{ steps.python_setup.outputs.python-version }}-${{ hashFiles('**/requirements.txt', '**/requirements-ci.txt') }}
+        key: venv-${{ runner.os }}-python-${{ steps.python_setup.outputs.python-version }}-${{ hashFiles('pyproject.toml') }}
         restore-keys: venv-${{ runner.os }}-python-${{ steps.python_setup.outputs.python-version }}-
 
-    - name: Install dependencies
+    - name: Create cached virtualenv
       if: steps.python_cache.outputs.cache-hit != 'true'
       run: |
         python -m venv venv
         source venv/bin/activate
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install -r requirements-ci.txt
 
-    - name: Install package
+    - name: Install package and test dependencies
       run: |
         source venv/bin/activate
-        pip install -e .
+        pip install -e '.[test]'
 
     - name: Run tests
       run: |

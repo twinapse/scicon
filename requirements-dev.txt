@@ -1,5 +1,0 @@
-isort==8.0.1
-pylint==4.0.5
-pytest
-ruff==0.15.12
-yapf==0.43.0

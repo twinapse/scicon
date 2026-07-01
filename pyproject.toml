@@ -41,11 +41,12 @@ dev = [
   'ruff==0.15.12',
   'yapf==0.43.0',
 ]
+publish = [
+  'build',
+  'twine',
+]
 test = [
   'pytest',
-  'pyyaml>=6.0',
-  'mcp>=1.2',
-  'tomlkit>=0.13',
 ]
 
 [project.scripts]
