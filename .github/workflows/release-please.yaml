@@ -16,9 +16,18 @@ jobs:
     name: Maintain release PR
     runs-on: ubuntu-latest
     steps:
+    - name: Create GitHub App installation token
+      id: app-token
+      uses: actions/create-github-app-token@v3
+      with:
+        client-id: ${{ vars.RELEASE_PLEASE_APP_CLIENT_ID }}
+        private-key: ${{ secrets.RELEASE_PLEASE_APP_PRIVATE_KEY }}
+        permission-contents: write
+        permission-issues: write
+        permission-pull-requests: write
     - name: Run release-please
       uses: googleapis/release-please-action@v4
       with:
-        token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+        token: ${{ steps.app-token.outputs.token }}
         config-file: release-please-config.json
         manifest-file: .release-please-manifest.json

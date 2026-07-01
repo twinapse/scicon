@@ -56,8 +56,8 @@ This guide documents how `scicon` releases are prepared before publishing to PyP
 
 ## Token requirements
 
-- The Release Please workflow must use `secrets.RELEASE_PLEASE_TOKEN` or an equivalent non-default GitHub App or PAT secret.
-- The token must allow Release Please to create release PRs, tags, and releases.
+- The Release Please workflow uses a GitHub App installation token minted at runtime with `actions/create-github-app-token`.
+- Store the app client ID in `vars.RELEASE_PLEASE_APP_CLIENT_ID` and the app private key in `secrets.RELEASE_PLEASE_APP_PRIVATE_KEY`.
+- Install the GitHub App on this repository and grant it `contents: write`, `issues: write`, and `pull requests: write` so Release Please can create release PRs, tags, and releases.
 - Do not rely on the default `GITHUB_TOKEN` for Release Please tags.
   Tags and PRs created with the default `GITHUB_TOKEN` do not trigger downstream GitHub Actions workflows.
-- If the project cannot provide a non-default Release Please token, replace tag-triggered publishing with publication inside the Release Please workflow.
