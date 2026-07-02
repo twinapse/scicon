@@ -1,4 +1,4 @@
-name: Release please
+name: Release Please
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create GitHub App installation token
-      id: app-token
+      id: app_token
       uses: actions/create-github-app-token@v3
       with:
         client-id: ${{ vars.RELEASE_PLEASE_APP_CLIENT_ID }}
@@ -25,9 +25,9 @@ jobs:
         permission-contents: write
         permission-issues: write
         permission-pull-requests: write
-    - name: Run release-please
+    - name: Run Release Please
       uses: googleapis/release-please-action@v4
       with:
-        token: ${{ steps.app-token.outputs.token }}
+        token: ${{ steps.app_token.outputs.token }}
         config-file: release-please-config.json
         manifest-file: .release-please-manifest.json

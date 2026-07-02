@@ -39,10 +39,14 @@ pip install -e '.[dev]'
 
 ## General guidelines
 
-- Follow these text-label conventions throughout the repository:
-  - Use sentence case for titles and headers throughout the repository.
-  - Apply the same rule to other display names, unless another documented convention overrides it.
+- Follow these label and identifier formatting conventions throughout the repository:
+  - Use sentence case for titles, headers, and other display names throughout the repository, unless another documented convention overrides it.
   - Keep proper nouns, brands, product names, acronyms, and code identifiers capitalized as needed within sentence-case titles, headers, and labels.
+  - In GitHub Actions workflows:
+    - Use sentence case for workflow `name` values, job `name` values, and step `name` values.
+    - Use kebab-case for GitHub Actions job IDs.
+    - Use snake_case for GitHub Actions step IDs.
+    - Use lowercase for GitHub Actions environment names such as `development`, `staging`, and `production`.
 
 ## Coding style
 
