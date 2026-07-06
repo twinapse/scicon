@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 13445 8932" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panelFill" x1="125.24" y1="125.24" x2="13319.69" y2="8805.8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#33e7ff" stop-opacity="0.22"/>
+      <stop offset="0.48" stop-color="#7e5cff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#0b1325" stop-opacity="0.76"/>
+    </linearGradient>
+    <linearGradient id="panelStroke" x1="125.24" y1="125.24" x2="13319.69" y2="8805.8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7df9ff"/>
+      <stop offset="0.55" stop-color="#a782ff"/>
+      <stop offset="1" stop-color="#43ffb5"/>
+    </linearGradient>
+    <linearGradient id="innerGlow" x1="1575" y1="1590" x2="11675" y2="7340" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7df9ff" stop-opacity="0.22"/>
+      <stop offset="0.56" stop-color="#a782ff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#43ffb5" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <path d="M13319.685,1028.019l0,6875c0,498.258 -404.521,902.779 -902.779,902.779l-11388.888,0c-498.258,0 -902.779,-404.521 -902.779,-902.779l0,-6875c0,-498.258 404.521,-902.779 902.779,-902.779l11388.888,0c498.258,0 902.779,404.521 902.779,902.779Z" fill="url(#panelFill)" stroke="url(#panelStroke)" stroke-width="60.75"/>
+  <path d="M1235,1220h10975c214,0 390,176 390,390v5690c0,214 -176,390 -390,390h-10975c-214,0 -390,-176 -390,-390v-5690c0,-214 176,-390 390,-390Z" fill="none" stroke="url(#innerGlow)" stroke-width="42"/>
+  <path d="M1545,1980h2710M1545,2880h1860M1545,3780h2240" fill="none" stroke="#7df9ff" stroke-width="70" stroke-linecap="round" stroke-opacity="0.12"/>
+  <path d="M9340,1980h2580M10080,2880h1840M9660,3780h2260" fill="none" stroke="#43ffb5" stroke-width="70" stroke-linecap="round" stroke-opacity="0.1"/>
+  <circle cx="6790" cy="4466" r="2420" fill="none" stroke="#a782ff" stroke-width="48" stroke-opacity="0.08"/>
+  <circle cx="6790" cy="4466" r="1610" fill="none" stroke="#7df9ff" stroke-width="36" stroke-opacity="0.1" stroke-dasharray="220 190"/>
+</svg>

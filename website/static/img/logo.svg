@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-labelledby="title desc">
+  <title id="title">SciCon logo</title>
+  <desc id="desc">A navy and cyan mark beside the SciCon wordmark.</desc>
+  <rect width="220" height="64" rx="16" fill="#0a1b36"/>
+  <rect x="0.75" y="0.75" width="218.5" height="62.5" rx="15.25" fill="none" stroke="#244a65" stroke-width="1.5"/>
+  <g transform="translate(10 10)">
+    <rect x="0" y="0" width="44" height="44" rx="14" fill="#061429" stroke="#244a65"/>
+    <path d="M12 30V14l10-6 10 6v16l-10 6-10-6Z" fill="none" stroke="#7df9ff" stroke-linejoin="round" stroke-width="2.5"/>
+    <path d="M22 12v12" stroke="#4bb8ff" stroke-linecap="round" stroke-width="3"/>
+    <circle cx="22" cy="17" r="5" fill="#43ffb5"/>
+  </g>
+  <text x="66" y="33" fill="#eaf7fb" font-family="Montserrat, system-ui, sans-serif" font-size="26" font-weight="700">
+    SciCon
+  </text>
+  <text x="66" y="49" fill="#81c2cc" font-family="Montserrat, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing=".16em">
+    SCIENTIFIC CONTEXT PROTOCOL
+  </text>
+</svg>

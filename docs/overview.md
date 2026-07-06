@@ -1,13 +1,13 @@
 # Project overview
 
-This project (`scicon`) is the official implementation of the [Scientific Context Protocol (SCP)](protocol.md).
+SciCon is the official implementation of the [Scientific Context Protocol (SCP)](protocol.md).
 It serves a hand-authored, structured representation of a scientific output to AI agents over [MCP](https://modelcontextprotocol.io).
 Ahead of time, the authors encode the study's claims, figures, data, methods, assumptions, and provenance into an SCP package, and each package object and link carries an [evidence status](protocol.md#evidence).
-`scicon` then serves that package read-only to connected agents.
+SciCon then serves that package read-only to connected agents.
 
 That arrangement lets an agent answer questions from confirmed structure instead of reconstructing everything from raw papers, notebooks, and data at question time.
 Question-time reconstruction is what invites hallucination and obscures the evidence behind each statement.
-By serving the package directly, `scicon` keeps answers grounded and able to cite their source.
+By serving the package directly, SciCon keeps answers grounded and able to cite their source.
 
 This project is currently an MVP.
 It implements a working core of the protocol rather than the whole of it, so some stages are still simplified or not yet built.
@@ -22,7 +22,7 @@ source artifacts  --(author)-->  scp-package/  --(serve over MCP)-->  agent  -->
 In the current MVP:
 
 1. The authors produce a scientific output (paper, code, data, figures, etc.) and publish a repository with those artifacts.
-2. The authors encode the relevant context into `scp-package/`, the [structured YAML package](package-schema.md) that `scicon` serves.
+2. The authors encode the relevant context into `scp-package/`, the [structured YAML package](package-schema.md) that SciCon serves.
 3. The authors run [`scicon validate`](validation.md) to check that the package is structurally valid before serving it to agents.
 4. The user clones the repository, installs `scicon`, and runs [`scicon init`](init.md) to register the MCP server with supported agent tooling.
 5. The user runs `scicon serve` to expose `scp-package/` through a [read-only MCP interface](mcp-server.md).

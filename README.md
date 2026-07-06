@@ -1,6 +1,6 @@
-# Scientific Context Protocol
+# SciCon
 
-The [Scientific Context Protocol (SCP)](docs/protocol.md) defines an agent-readable layer for grounded inspection of scientific outputs. This repository is the official implementation of SCP.
+SciCon is the official implementation of the [Scientific Context Protocol (SCP)](docs/protocol.md), which defines an agent-readable layer for grounded inspection of scientific outputs.
 
 With the installable `scicon` Python package, you can add a hand-authored `scp-package/` directory to a scientific repository, validate that structured package, and serve it to AI agents over MCP.
 That gives connected agents a grounded, evidence-aware view of the study's claims, data, methods, and provenance.

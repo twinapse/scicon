@@ -1,0 +1,370 @@
+/* Scoped wrapper for the embedded SCP animation (scp-mvp-lottie App.css follows). */
+.scp-animation {
+  --color-bg: #061429;
+  --color-text: #81c2cc;
+  background: var(--color-bg);
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 4vw, 48px);
+  border: 1px solid #244a65;
+  border-radius: 1.6rem;
+}
+.scp-animation__placeholder {
+  min-height: 40rem;
+  background: #061429;
+  border: 1px solid #244a65;
+  border-radius: 1.6rem;
+}
+/* Prose UI text uses Montserrat; Lottie-baked identifier text stays monospace. */
+.scp-animation .phase-storyline__title,
+.scp-animation .phase-storyline__body,
+.scp-animation .animation-experience__control {
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+:root {
+  --color-bg: #061429;
+  --color-text: #81c2cc;
+}
+
+.animation-block {
+  width: 100%;
+  min-width: 0;
+}
+
+.animation-experience {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.animation-experience__controls {
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: calc(var(--animation-control-top-gap) * var(--animation-control-scale));
+}
+
+.animation-experience__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--animation-control-arrow-gap);
+  min-height: 44px;
+  padding: 10px var(--animation-control-horizontal-padding);
+  border: 1px solid var(--color-text);
+  border-radius: 12px;
+  color: var(--color-text);
+  background: rgb(10 27 54 / 88%);
+  box-shadow:
+    0 0 12px rgb(125 249 255 / 22%),
+    inset 0 0 12px rgb(125 249 255 / 8%);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+  transform: scale(var(--animation-control-scale));
+  transform-origin: top right;
+}
+
+.animation-experience__control-label {
+  font-size: var(--animation-control-label-font-size);
+}
+
+.animation-experience__control-arrow {
+  font-size: var(--animation-control-arrow-font-size);
+  line-height: 0.7;
+}
+
+.animation-experience__control:hover {
+  color: #fff;
+  border-color: #7df9ff;
+  box-shadow:
+    0 0 18px rgb(125 249 255 / 38%),
+    inset 0 0 14px rgb(125 249 255 / 12%);
+  transform: scale(var(--animation-control-scale)) translateY(-1px);
+}
+
+.animation-experience__control:focus-visible {
+  outline: 2px solid #7df9ff;
+  outline-offset: 3px;
+}
+
+.phase-storyline__viewport {
+  width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.phase-storyline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, var(--story-phase-width));
+  justify-content: space-between;
+  width: var(--story-reference-width);
+  height: var(--story-total-height);
+  box-sizing: border-box;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--story-horizontal-padding);
+  list-style: none;
+  transform: scale(var(--story-composition-scale));
+  transform-origin: top left;
+}
+
+.phase-storyline__item {
+  position: relative;
+  width: var(--story-phase-width);
+  height: var(--story-total-height);
+}
+
+.phase-storyline__phase-content {
+  width: var(--story-phase-width);
+  height: var(--story-phase-height);
+  display: grid;
+  grid-template-columns: var(--story-icon-size) var(--story-text-width);
+  align-items: center;
+  gap: var(--story-icon-text-gap);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: phase-storyline-enter 480ms cubic-bezier(0.22, 1, 0.36, 1)
+    var(--phase-spawn-delay) both;
+}
+
+.phase-storyline__progress {
+  position: absolute;
+  top: calc(var(--story-phase-height) + var(--story-bridge-gap));
+  left: 50%;
+  width: 0;
+  height: var(--story-bridge-node-diameter);
+  pointer-events: none;
+}
+
+.phase-storyline__progress-node,
+.phase-storyline__progress-edge {
+  position: absolute;
+  display: block;
+  opacity: var(--story-bridge-inactive-opacity);
+  animation: phase-storyline-progress-activate 240ms ease-out
+    var(--phase-activation-delay) both;
+}
+
+.phase-storyline__progress-node {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: var(--story-bridge-node-diameter);
+  height: var(--story-bridge-node-diameter);
+  border: var(--story-bridge-edge-thickness) solid var(--story-bridge-inactive-color);
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: var(--story-bridge-inactive-color);
+  transform: translateX(-50%);
+}
+
+.phase-storyline__progress-edge {
+  top: calc((var(--story-bridge-node-diameter) - var(--story-bridge-edge-thickness)) / 2);
+  right: 0;
+  width: calc(var(--story-phase-width) + var(--story-column-gap));
+  height: var(--story-bridge-edge-thickness);
+  background: var(--story-bridge-inactive-color);
+}
+
+@keyframes phase-storyline-progress-activate {
+  to {
+    opacity: var(--story-bridge-active-opacity);
+    background: var(--phase-accent);
+    border-color: var(--phase-accent);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--phase-accent) 48%, transparent);
+  }
+}
+
+.phase-storyline__progress-edge {
+  --phase-accent: var(--story-bridge-active-edge-color);
+}
+
+.phase-storyline__icon-frame {
+  width: var(--story-icon-size);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--phase-accent);
+  border-radius: 14px;
+  background: rgb(6 20 41 / 78%);
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--phase-accent) 48%, transparent),
+    0 0 28px color-mix(in srgb, var(--phase-accent) 22%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--phase-accent) 10%, transparent);
+}
+
+.phase-storyline__icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transform: scale(var(--story-icon-scale));
+}
+
+.phase-storyline__description {
+  width: var(--story-text-width);
+  height: var(--story-text-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.phase-storyline__title,
+.phase-storyline__body {
+  margin: 0;
+}
+
+.phase-storyline__title {
+  color: var(--phase-accent);
+  font-size: var(--story-title-font-size);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.phase-storyline__body {
+  margin-top: var(--story-text-gap);
+  color: var(--color-text);
+  font-size: var(--story-body-font-size);
+  line-height: 1.45;
+}
+
+.phase-storyline--reduced-motion .phase-storyline__phase-content {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.phase-storyline--reduced-motion .phase-storyline__progress-node,
+.phase-storyline--reduced-motion .phase-storyline__progress-edge {
+  opacity: var(--story-bridge-active-opacity);
+  background: var(--phase-accent);
+  border-color: var(--phase-accent);
+  animation: none;
+}
+
+.phase-storyline--reduced-motion .phase-storyline__progress-edge {
+  background: var(--story-bridge-active-edge-color);
+}
+
+@keyframes phase-storyline-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animation-block__stage {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.animation-stage__canvas,
+.animation-stage__canvas > div,
+.animation-stage__canvas svg {
+  width: 100%;
+  height: 100%;
+}
+
+.animation-stage__canvas {
+  position: relative;
+  z-index: 1;
+}
+
+.conversion-tool-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.conversion-tool-overlay--intro {
+  opacity: 0;
+  animation: conversion-tool-reveal
+    var(--conversion-tool-intro-duration)
+    ease-out
+    var(--conversion-tool-intro-delay)
+    forwards;
+}
+
+.conversion-tool-overlay__container,
+.conversion-tool-overlay__engine {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  max-width: none;
+  max-height: none;
+}
+
+.conversion-tool-overlay__container {
+  z-index: 0;
+}
+
+.conversion-tool-overlay__engine {
+  z-index: 2;
+  transform-origin: center;
+}
+
+.conversion-tool-overlay__engine--spinning {
+  animation: conversion-engine-spin
+    var(--conversion-tool-processing-duration)
+    linear
+    infinite;
+}
+
+@keyframes conversion-tool-reveal {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes conversion-engine-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase-storyline__phase-content,
+  .phase-storyline__progress-node,
+  .phase-storyline__progress-edge {
+    opacity: 1;
+    animation: none;
+  }
+
+  .phase-storyline__phase-content {
+    transform: none;
+  }
+
+  .conversion-tool-overlay__engine--spinning {
+    animation: none;
+  }
+
+  .conversion-tool-overlay--intro {
+    opacity: 1;
+    animation: none;
+  }
+
+  .animation-experience__control {
+    transition: none;
+  }
+}

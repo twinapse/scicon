@@ -60,7 +60,7 @@ content-type = 'text/markdown'
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
 path = 'README.md'
-start-at = '# Scientific Context Protocol'
+start-at = '# SciCon'
 end-before = '<!-- toc -->'
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
@@ -82,6 +82,11 @@ replacement = '](https://github.com/twinapse/scicon/blob/main/\1)'
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 pattern = '\]\((examples/[^)]+)\)'
 replacement = '](https://github.com/twinapse/scicon/tree/main/\1)'
+
+[tool.hatch.build]
+exclude = [
+  '/website',
+]
 
 [tool.hatch.build.targets.wheel]
 artifacts = [
