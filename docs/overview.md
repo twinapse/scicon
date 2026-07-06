@@ -1,63 +1,50 @@
 # Project overview
 
-This document describes the overall SCP vision, conceptual pipeline, and trust model.
+This project (`scicon`) is the official implementation of the [Scientific Context Protocol (SCP)](protocol.md).
+It serves a hand-authored, structured representation of a scientific output to AI agents over [MCP](https://modelcontextprotocol.io).
+Ahead of time, the authors encode the study's claims, figures, data, methods, assumptions, and provenance into an SCP package, and each package object and link carries an [evidence status](protocol.md#evidence).
+`scicon` then serves that package read-only to connected agents.
 
-<!-- toc -->
+That arrangement lets an agent answer questions from confirmed structure instead of reconstructing everything from raw papers, notebooks, and data at question time.
+Question-time reconstruction is what invites hallucination and obscures the evidence behind each statement.
+By serving the package directly, `scicon` keeps answers grounded and able to cite their source.
 
-- [SCP vision](#scp-vision)
-- [Pipeline](#pipeline)
-- [Trust model](#trust-model)
-
-## SCP vision
-
-Scientific Context Protocol (SCP) is the idea that a scientific output should ship with an agent-readable layer, not only a paper PDF and a repository.
-
-The final product should help expert users inspect a study's claims, figures, data, code, methods, assumptions, provenance, and relevant related work through a structured package and staged agent interface.
-
-That final product may eventually include:
-
-- A reusable package schema for scientific outputs.
-- Artifact mining over papers, supplements, code, data, figures, and docs.
-- Conversion tooling that normalizes mined evidence into package files.
-- Author-confirmation workflows for high-impact inferred fields.
-- Validation for package completeness, links, evidence statuses, and grounded agent behavior.
-- A read-only inspection layer through MCP-compatible tools and resources.
-- Domain-specific profiles after the first demonstrator proves value.
-- Controlled operations only after the read-only inspection layer works and only with explicit user approval.
-
-This repository is still in an **MVP** stage rather than the full product shape described above.
-[README.md](../README.md#current-status) records the current implementation status and limitations.
-Those final-product ideas are context.
-They are not all implementation commitments for this repository.
+This project is currently an MVP.
+It implements a working core of the protocol rather than the whole of it, so some stages are still simplified or not yet built.
+See [current status](../README.md#current-status) for the authoritative scope, and the [stages below](#protocol-stages-in-this-mvp) for how the current tool maps onto the protocol.
 
 ## Pipeline
+
+```text
+source artifacts  --(author)-->  scp-package/  --(serve over MCP)-->  agent  -->  grounded, cited answer
+```
 
 In the current MVP:
 
 1. The authors produce a scientific output (paper, code, data, figures, etc.) and publish a repository with those artifacts.
-2. The authors encode the relevant context into `scp-package/`, the structured YAML package that `scicon` serves.
-3. The authors run `scicon validate` to check that the package is structurally valid before serving it to agents.
-4. The user clones the repository, installs `scicon`, and runs `scicon init` to register the MCP server with supported agent tooling.
-5. The user runs `scicon serve` to expose `scp-package/` through a read-only MCP interface.
+2. The authors encode the relevant context into `scp-package/`, the [structured YAML package](package-schema.md) that `scicon` serves.
+3. The authors run [`scicon validate`](validation.md) to check that the package is structurally valid before serving it to agents.
+4. The user clones the repository, installs `scicon`, and runs [`scicon init`](init.md) to register the MCP server with supported agent tooling.
+5. The user runs `scicon serve` to expose `scp-package/` through a [read-only MCP interface](mcp-server.md).
 6. The user asks a question through an agent connected to that MCP server.
 7. The agent reads package content from the MCP interface instead of inferring everything from raw study files at question time.
-8. The agent returns a grounded answer tied to structured package content and its recorded evidence statuses.
+8. The agent returns a grounded answer tied to structured package content and its recorded evidence statuses, [as the protocol requires](protocol.md#agent-facing-answers).
 
-In this flow:
+## Participants
 
-- **The authors** are the people who produced the study and its source artifacts.
-- **The user** is the person who installs `scicon`, runs the MCP server, and asks questions through an agent.
+- **The authors** produce the study and its source artifacts, and encode them into the SCP package.
+- **The user** installs `scicon`, runs the MCP server, and asks questions through an agent.
 - **The agent** is the MCP client that reads package content and returns grounded answers.
 
-## Trust model
+## Protocol stages in this MVP
 
-The server must distinguish:
+The protocol defines six [protocol stages](protocol.md#protocol-stages), and this MVP implements only part of that arc.
+The mapping below places each stage in context.
 
-- Information directly stated in source artifacts.
-- Deterministically extracted metadata.
-- Inferred metadata.
-- Author-confirmed metadata.
-- Missing information.
-- Ambiguous or conflicting evidence.
-
-The server should preserve those statuses exactly and prefer "not enough information" over plausible but unsupported provenance.
+| Protocol stage | In this MVP |
+| --- | --- |
+| Mining and conversion (1, 2) | Mocked, so the authors write the package by hand instead of deriving it from source artifacts. |
+| Author confirmation (3) | Manual, as the authors record the evidence status of each package object and link. |
+| Validation (4) | `scicon validate`. |
+| Read-only inspection (5) | `scicon serve` over MCP. |
+| Controlled operations (6) | Out of scope; the interface does not execute commands, download data, or modify files. |

@@ -1,12 +1,9 @@
 # Scientific Context Protocol
 
-The Scientific Context Protocol (SCP) defines an agent-readable layer published alongside a scientific output's paper PDF and repository.
-SCP exposes a study's claims, figures, data, code, methods, assumptions, provenance, and related work through a structured package and a staged agent interface.
+The [Scientific Context Protocol (SCP)](docs/protocol.md) defines an agent-readable layer for grounded inspection of scientific outputs. This repository is the official implementation of SCP.
 
-This repository is the official implementation of SCP.
-The installable `scicon` Python package serves hand-authored SCP packages through an MCP interface.
-Your repository installs `scicon`, authors a structured `scp-package/` directory, and exposes that package to AI agents through `scicon serve`.
-The server validates structured package files and serves grounded answers through MCP.
+With the installable `scicon` Python package, you can add a hand-authored `scp-package/` directory to a scientific repository, validate that structured package, and serve it to AI agents over MCP.
+That gives connected agents a grounded, evidence-aware view of the study's claims, data, methods, and provenance.
 
 <!-- toc -->
 
@@ -76,23 +73,23 @@ It contains one small neuroscience-style package with claims, figures, datasets,
 
 ### Start here
 
-- [docs/overview.md](docs/overview.md): Vision, conceptual pipeline, final-product context, and trust model.
-- [docs/concepts.md](docs/concepts.md): Short glossary.
+- [docs/protocol.md](docs/protocol.md): SCP protocol specification and source of truth for protocol-specific terminology and definitions.
+- [docs/overview.md](docs/overview.md): Project and tool orientation, usage pipeline, and participant roles.
+- [docs/glossary.md](docs/glossary.md): Alphabetical term reference.
 
 ### Author and validate SCP packages
 
-- [docs/package-schema.md](docs/package-schema.md): Package files, objects, statuses, and predicate vocabulary.
+- [docs/package-schema.md](docs/package-schema.md): Package files, object shapes, evidence-status encoding, and predicate vocabulary.
 - [docs/validation.md](docs/validation.md): Validation checks and report behavior.
 
 ### Bootstrap and serve SCP packages
 
 - [docs/init.md](docs/init.md): Repository bootstrap, managed files, agent targeting, and refresh/uninstall behavior.
-- [docs/mcp-server.md](docs/mcp-server.md): MCP registration, tools, resources, and path resolution.
+- [docs/mcp-server.md](docs/mcp-server.md): MCP registration, path resolution, tools, resources, and serving behavior.
 
 ### Contribute
 
 - [CONTRIBUTING.md](CONTRIBUTING.md): Shared contributor policies, checks, and Git conventions.
-- [docs/architecture.md](docs/architecture.md): Package layout, layer boundaries, serving model, and interface contract.
-- [docs/protocol.md](docs/protocol.md): Final-protocol context and expansion rules.
+- [docs/architecture.md](docs/architecture.md): Package layout, layer boundaries, serving model, and dependency modes.
 - [docs/releasing.md](docs/releasing.md): Release automation, versioning, changelog, and PyPI sequencing.
 - [docs/coding-agent-setup.md](docs/coding-agent-setup.md): Project-local coding-agent setup guidance.

@@ -52,20 +52,15 @@ scp-package/
 
 ## Evidence statuses
 
-Use evidence statuses on important objects and links:
+Use `evidence_status` on important objects and links according to the protocol's [Evidence requirements](protocol.md#evidence), which define the status vocabulary and its interpretation rules.
 
-- `explicit`: Directly stated in a source artifact.
-- `extracted`: Produced by deterministic or rule-based extraction.
-- `inferred`: Proposed by rules, an LLM, or agent reasoning.
-- `imported`: Imported from existing machine-readable metadata.
-- `author_confirmed`: Confirmed by an author or maintainer.
-- `missing`: Expected information is absent.
-- `ambiguous`: Multiple interpretations remain.
-- `unresolved`: Known follow-up item.
-
-Do not turn inferred or ambiguous metadata into confirmed metadata without source evidence or author confirmation.
+```yaml
+evidence_status: explicit
+```
 
 ## provenance.yaml typed edges
+
+The package objects and package links in this binding realize the protocol's [Package model](protocol.md#package-model): each package object has one of the protocol's package object categories, and an edge in `provenance.yaml` encodes a package link.
 
 `provenance.yaml` is the canonical place for support, provenance, and other cross-object relationships.
 Object files keep intrinsic fields; typed edges carry the link graph.
@@ -271,5 +266,5 @@ Mark it `missing` or `ambiguous` when the section cannot be resolved.
 - `execution_supported`
 
 Use `execution_supported` to describe the recipe metadata.
-The field does not grant execution authority by itself.
-See [README.md](../README.md#current-status) for current implementation support and [docs/protocol.md](protocol.md#final-protocol-stages) for final-product context.
+The field does not grant execution authority by itself under the protocol's [Controlled operations requirements](protocol.md#controlled-operations).
+See [README.md](../README.md#current-status) for current implementation support and [Protocol stages](protocol.md#protocol-stages) for the operation's place in the protocol.

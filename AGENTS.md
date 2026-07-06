@@ -28,9 +28,10 @@ Install or run tools only inside the activated virtual environment.
 - Reuse existing structure: follow the [reuse rules](CONTRIBUTING.md#reuse) and prefer extending an existing helper, module, or pattern over introducing a parallel abstraction.
   When in doubt, do not add the new concept.
 - `scicon init` is the sanctioned bootstrap entry point for writing managed SCP setup files into the user's repository.
-- Do not convert inferred, mined, or ambiguous metadata into confirmed package truth without source evidence or author confirmation.
+- Follow the protocol's [Evidence requirements](docs/protocol.md#evidence): do not convert inferred, mined, or ambiguous metadata into confirmed package truth without source evidence or author confirmation.
 - Keep schema, package, validation, and interface concerns separate.
-- Treat final-protocol context in `docs/protocol.md` as reference material.
+- Treat `docs/protocol.md` as the source of truth for SCP-specific terminology, definitions, and protocol requirements.
+  It describes the full protocol, not all of which is in scope for this repository.
   Do not implement protocol features beyond [README.md](README.md#current-status) unless the task explicitly asks for a scope change.
 - Treat these instructions as additive to the shared repository policies in [CONTRIBUTING.md](CONTRIBUTING.md).
 
