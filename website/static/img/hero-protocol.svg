@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" role="img" aria-labelledby="title desc">
+  <title id="title">Scientific package to MCP illustration</title>
+  <desc id="desc">A stylized diagram showing source artifacts turning into a structured SCP package that flows into an MCP agent.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#f5fbfa"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#d55d3d"/>
+      <stop offset="100%" stop-color="#127f88"/>
+    </linearGradient>
+  </defs>
+  <rect width="920" height="620" rx="36" fill="url(#panel)"/>
+  <circle cx="128" cy="132" r="72" fill="#fff" opacity=".84"/>
+  <circle cx="748" cy="492" r="108" fill="#fff" opacity=".56"/>
+  <g transform="translate(56 92)">
+    <rect x="0" y="0" width="204" height="136" rx="24" fill="#152330"/>
+    <text x="24" y="36" fill="#fffaf3" font-family="Manrope, sans-serif" font-size="20" font-weight="700">Source artifacts</text>
+    <rect x="24" y="54" width="156" height="14" rx="7" fill="#e09b4f"/>
+    <rect x="24" y="82" width="118" height="12" rx="6" fill="#58707d"/>
+    <rect x="24" y="106" width="144" height="12" rx="6" fill="#58707d"/>
+    <text x="24" y="126" fill="#d7e3e1" font-family="Manrope, sans-serif" font-size="14">Paper, data, code, figures</text>
+  </g>
+  <g transform="translate(296 70)">
+    <rect x="0" y="0" width="330" height="208" rx="28" fill="#ffffff" stroke="#d7ddd9" stroke-width="2"/>
+    <text x="28" y="42" fill="#14212a" font-family="Fraunces, serif" font-size="28" font-weight="700">SCP package</text>
+    <g transform="translate(28 68)">
+      <rect x="0" y="0" width="122" height="44" rx="14" fill="#fff3e5" stroke="#f0c38d"/>
+      <text x="18" y="28" fill="#913920" font-family="Manrope, sans-serif" font-size="16" font-weight="700">claims.yaml</text>
+      <rect x="146" y="0" width="144" height="44" rx="14" fill="#eaf7f6" stroke="#8cc7c4"/>
+      <text x="164" y="28" fill="#0f636a" font-family="Manrope, sans-serif" font-size="16" font-weight="700">figures.yaml</text>
+      <rect x="0" y="62" width="132" height="44" rx="14" fill="#eaf7f6" stroke="#8cc7c4"/>
+      <text x="18" y="90" fill="#0f636a" font-family="Manrope, sans-serif" font-size="16" font-weight="700">methods.yaml</text>
+      <rect x="156" y="62" width="134" height="44" rx="14" fill="#fff3e5" stroke="#f0c38d"/>
+      <text x="174" y="90" fill="#913920" font-family="Manrope, sans-serif" font-size="16" font-weight="700">datasets.yaml</text>
+      <rect x="46" y="124" width="198" height="44" rx="14" fill="#152330"/>
+      <text x="74" y="152" fill="#fffaf3" font-family="Manrope, sans-serif" font-size="16" font-weight="700">provenance.yaml</text>
+    </g>
+  </g>
+  <g transform="translate(658 108)">
+    <rect x="0" y="0" width="206" height="296" rx="28" fill="#152330"/>
+    <rect x="18" y="18" width="170" height="32" rx="16" fill="#263949"/>
+    <text x="38" y="39" fill="#d7e3e1" font-family="Manrope, sans-serif" font-size="14" font-weight="700">MCP agent</text>
+    <rect x="28" y="74" width="150" height="68" rx="18" fill="#fffaf3"/>
+    <text x="46" y="112" fill="#14212a" font-family="Fraunces, serif" font-size="26" font-weight="700">Grounded</text>
+    <text x="46" y="134" fill="#4f606c" font-family="Manrope, sans-serif" font-size="14">Answers with evidence</text>
+    <rect x="28" y="168" width="150" height="42" rx="14" fill="#127f88"/>
+    <text x="52" y="194" fill="#fffaf3" font-family="Manrope, sans-serif" font-size="16" font-weight="700">Inspect tools</text>
+    <rect x="28" y="224" width="150" height="42" rx="14" fill="#d55d3d"/>
+    <text x="52" y="250" fill="#fffaf3" font-family="Manrope, sans-serif" font-size="16" font-weight="700">Cited output</text>
+  </g>
+  <path d="M262 160h28c48 0 48 0 72 0" fill="none" stroke="url(#flow)" stroke-linecap="round" stroke-width="14"/>
+  <path d="M626 206h32c48 0 48 0 72 0" fill="none" stroke="url(#flow)" stroke-linecap="round" stroke-width="14"/>
+  <circle cx="390" cy="160" r="18" fill="#d55d3d"/>
+  <circle cx="732" cy="206" r="18" fill="#127f88"/>
+  <g transform="translate(204 360)">
+    <rect x="0" y="0" width="404" height="150" rx="26" fill="#ffffff" stroke="#d7ddd9" stroke-width="2"/>
+    <text x="28" y="42" fill="#14212a" font-family="Fraunces, serif" font-size="26" font-weight="700">Single source of truth</text>
+    <text x="28" y="78" fill="#4f606c" font-family="Manrope, sans-serif" font-size="18">
+      Canonical repository docs are transformed into a publishable site at build time.
+    </text>
+    <text x="28" y="112" fill="#4f606c" font-family="Manrope, sans-serif" font-size="18">
+      Generated website docs stay ignored, so the repo never commits duplicate content.
+    </text>
+  </g>
+</svg>

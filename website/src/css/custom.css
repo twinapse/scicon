@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+:root,
+html[data-theme='dark'] {
+  --ifm-color-primary: #7df9ff;
+  --ifm-color-primary-dark: #5bbfcf;
+  --ifm-color-primary-darker: #4aa9b8;
+  --ifm-color-primary-darkest: #2f7f8c;
+  --ifm-color-primary-light: #9dfbff;
+  --ifm-color-primary-lighter: #b8fcff;
+  --ifm-color-primary-lightest: #d9feff;
+
+  --ifm-background-color: #061429;
+  --ifm-font-color-base: #81c2cc;
+  --ifm-heading-color: #eaf7fb;
+  --ifm-font-family-base: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ifm-heading-font-family: 'Montserrat', system-ui, sans-serif;
+  --ifm-font-family-monospace: 'Consolas', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --ifm-navbar-background-color: rgba(6, 20, 41, 0.85);
+  --ifm-footer-background-color: #04101f;
+  --ifm-code-font-size: 95%;
+
+  --scp-bg: #061429;
+  --scp-panel: #0a1b36;
+  --scp-ink: #81c2cc;
+  --scp-muted: #5f8d99;
+  --scp-border: #244a65;
+  --scp-accent: #7df9ff;
+  --scp-paper: #4bb8ff;
+  --scp-code: #a681fe;
+  --scp-data: #43ffb5;
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at top, rgba(125, 249, 255, 0.08), transparent 30%),
+    var(--scp-bg);
+  color: var(--scp-ink);
+}
+
+.navbar { backdrop-filter: blur(12px); }
+.navbar__title, .footer__title { font-family: var(--ifm-heading-font-family); }
+
+.button.button--primary { color: #041019; border: none; box-shadow: 0 0 18px rgba(125, 249, 255, 0.35); }
+.button.button--secondary { background: var(--scp-panel); border-color: var(--scp-border); color: var(--scp-ink); }
+
+.eyebrow {
+  color: var(--scp-accent);
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.16em; margin: 0; text-transform: uppercase;
+}
+
+.feature-section { display: grid; gap: 1.5rem; }
+.feature-section__header { max-width: 40rem; }
+.feature-section__title { font-size: clamp(1.8rem, 2.8vw, 2.6rem); margin: 0.35rem 0 0; color: var(--ifm-heading-color); }
+.feature-section__body { color: var(--scp-muted); line-height: 1.7; margin: 0.75rem 0 0; }
+.feature-grid { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.feature-card {
+  background: var(--scp-panel); border: 1px solid var(--scp-border); border-radius: 1.35rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); display: grid; gap: 0.8rem; padding: 1.2rem;
+}
+.feature-card__icon { width: 44px; height: 44px; }
+.feature-card__kicker { color: var(--scp-accent); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.feature-card__title { font-size: 1.3rem; line-height: 1.1; margin: 0; color: var(--ifm-heading-color); }
+.feature-card__body { color: var(--scp-muted); line-height: 1.65; margin: 0; }
+
+.video-shell { align-content: stretch; display: grid; }
+.video-shell__trigger { background: transparent; border: none; cursor: pointer; padding: 0; position: relative; }
+.video-shell__poster,
+.video-shell__frame iframe,
+.video-shell__frame video {
+  background: #04101f; border-radius: 1.15rem; display: block; height: 100%; min-height: 22rem; width: 100%;
+}
+.video-shell__badge {
+  align-items: center; backdrop-filter: blur(8px); background: rgba(125, 249, 255, 0.16);
+  border: 1px solid var(--scp-accent); border-radius: 999px; color: var(--scp-accent);
+  display: inline-flex; font-size: 0.9rem; font-weight: 700; gap: 0.5rem; left: 1rem;
+  padding: 0.65rem 0.95rem; position: absolute; top: 1rem;
+}
+.video-shell__badge::before {
+  border-bottom: 0.45rem solid transparent; border-left: 0.72rem solid currentColor;
+  border-top: 0.45rem solid transparent; content: ''; display: block; height: 0; width: 0;
+}
+.video-shell__frame { border-radius: 1.15rem; overflow: hidden; }
+.video-shell__fallback {
+  align-items: center; background: linear-gradient(145deg, #0a1b36, #04101f); border-radius: 1.15rem;
+  color: var(--scp-ink); display: grid; font-weight: 700; min-height: 22rem; place-items: center;
+}
+
+@media (max-width: 996px) { .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .video-shell__poster, .video-shell__frame iframe, .video-shell__frame video, .video-shell__fallback { min-height: 16rem; }
+}

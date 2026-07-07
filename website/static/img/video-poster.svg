@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">SciCon video poster placeholder</title>
+  <desc id="desc">A wordless SciCon demo poster with layered conversation cards and a play symbol.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#061429"/>
+      <stop offset="100%" stop-color="#0a1b36"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="15%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#7df9ff" stop-opacity=".16"/>
+      <stop offset="100%" stop-color="#7df9ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card-stroke" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f587b"/>
+      <stop offset="100%" stop-color="#244a65"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="32" fill="url(#bg)"/>
+  <rect width="960" height="540" rx="32" fill="url(#glow)"/>
+  <rect x="84" y="78" width="792" height="384" rx="32" fill="#04101f" stroke="#163452" stroke-width="2"/>
+
+  <g opacity=".82">
+    <path d="M294 214C340 176 396 160 452 164" fill="none" stroke="#1b4566" stroke-linecap="round" stroke-width="3"/>
+    <path d="M506 168C562 166 618 182 664 216" fill="none" stroke="#1b4566" stroke-linecap="round" stroke-width="3"/>
+    <path d="M314 332C366 372 424 392 480 392" fill="none" stroke="#1b4566" stroke-linecap="round" stroke-width="3"/>
+    <path d="M646 334C594 374 536 392 480 392" fill="none" stroke="#1b4566" stroke-linecap="round" stroke-width="3"/>
+  </g>
+
+  <g>
+    <rect x="126" y="136" width="228" height="142" rx="24" fill="#0a1b36" stroke="url(#card-stroke)" stroke-width="2"/>
+    <circle cx="160" cy="170" r="11" fill="#4bb8ff"/>
+    <rect x="184" y="160" width="118" height="12" rx="6" fill="#17385a"/>
+    <rect x="160" y="198" width="150" height="14" rx="7" fill="#254f72"/>
+    <rect x="160" y="224" width="126" height="14" rx="7" fill="#163452"/>
+    <rect x="160" y="250" width="96" height="14" rx="7" fill="#102946"/>
+  </g>
+
+  <g>
+    <rect x="366" y="106" width="228" height="164" rx="24" fill="#0b203d" stroke="#3f7bb3" stroke-width="2"/>
+    <circle cx="400" cy="140" r="11" fill="#7df9ff"/>
+    <rect x="424" y="130" width="118" height="12" rx="6" fill="#1d4366"/>
+    <rect x="400" y="168" width="150" height="14" rx="7" fill="#29597f"/>
+    <rect x="400" y="194" width="164" height="14" rx="7" fill="#1b4566"/>
+    <rect x="400" y="220" width="110" height="14" rx="7" fill="#143251"/>
+  </g>
+
+  <g>
+    <rect x="606" y="138" width="228" height="142" rx="24" fill="#0a1b36" stroke="url(#card-stroke)" stroke-width="2"/>
+    <circle cx="640" cy="172" r="11" fill="#43ffb5"/>
+    <rect x="664" y="162" width="118" height="12" rx="6" fill="#153c48"/>
+    <rect x="640" y="200" width="144" height="14" rx="7" fill="#1f5e67"/>
+    <rect x="640" y="226" width="126" height="14" rx="7" fill="#17434a"/>
+    <rect x="640" y="252" width="90" height="14" rx="7" fill="#102d32"/>
+  </g>
+
+  <g opacity=".95">
+    <circle cx="480" cy="328" r="18" fill="#0d2744" stroke="#2d648d" stroke-width="2"/>
+    <circle cx="436" cy="366" r="14" fill="#0d2744" stroke="#4bb8ff" stroke-width="2"/>
+    <circle cx="524" cy="366" r="14" fill="#0d2744" stroke="#43ffb5" stroke-width="2"/>
+    <path d="M448 356l22-20" fill="none" stroke="#315f82" stroke-linecap="round" stroke-width="2.5"/>
+    <path d="M512 356l-22-20" fill="none" stroke="#315f82" stroke-linecap="round" stroke-width="2.5"/>
+  </g>
+
+  <circle cx="480" cy="270" r="72" fill="#07172f" stroke="#7df9ff" stroke-width="4"/>
+  <circle cx="480" cy="270" r="58" fill="rgba(125,249,255,.07)"/>
+  <path d="M458 232l62 38-62 38Z" fill="#7df9ff"/>
+</svg>
